@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DietApp.Entity\DietApp.Entity.csproj" />
+  </ItemGroup>
+
 </Project>
