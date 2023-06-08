@@ -10,7 +10,7 @@
     <ProjectReference Include="..\DietApp.Core\DietApp.Core.csproj" />
     <ProjectReference Include="..\DietApp.DAL\DietApp.DAL.csproj" />
     <ProjectReference Include="..\DietApp.Entity\DietApp.Entity.csproj" />
-    <ProjectReference Include="..\DietApp.System\DietApp.System.csproj" />
+    <ProjectReference Include="..\DietApp.Systm\DietApp.Systm.csproj" />
     <ProjectReference Include="..\DietApp.ViewModels\DietApp.ViewModels.csproj" />
   </ItemGroup>
 

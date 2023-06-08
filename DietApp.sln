@@ -3,28 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.Core", "DietApp.Core\DietApp.Core.csproj", "{B40CA741-59FF-4213-B537-6FBF48DA0A66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DietApp.Core", "DietApp.Core\DietApp.Core.csproj", "{B40CA741-59FF-4213-B537-6FBF48DA0A66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.Entity", "DietApp.Entity\DietApp.Entity.csproj", "{F87D4B5D-3B81-4C5F-AE17-400862408B67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DietApp.Entity", "DietApp.Entity\DietApp.Entity.csproj", "{F87D4B5D-3B81-4C5F-AE17-400862408B67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.DAL", "DietApp.DAL\DietApp.DAL.csproj", "{60CA669C-9EC0-4093-8084-E8A841ADB4B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DietApp.DAL", "DietApp.DAL\DietApp.DAL.csproj", "{60CA669C-9EC0-4093-8084-E8A841ADB4B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.BLL", "DietApp.BLL\DietApp.BLL.csproj", "{A929FC04-27A4-4D62-A376-90E8F656B157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DietApp.BLL", "DietApp.BLL\DietApp.BLL.csproj", "{A929FC04-27A4-4D62-A376-90E8F656B157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.WebAPI", "DietApp.WebAPI\DietApp.WebAPI.csproj", "{FECBE6B8-01C3-4B94-9D39-47907D52A534}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DietApp.WebAPI", "DietApp.WebAPI\DietApp.WebAPI.csproj", "{FECBE6B8-01C3-4B94-9D39-47907D52A534}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.WebUI", "DietApp.WebUI\DietApp.WebUI.csproj", "{57E37B39-7B9A-4325-8D1D-B40D0CC0F740}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DietApp.WebUI", "DietApp.WebUI\DietApp.WebUI.csproj", "{57E37B39-7B9A-4325-8D1D-B40D0CC0F740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.WinUI", "DietApp.WinUI\DietApp.WinUI.csproj", "{9BFC3E77-0A7B-4187-BEF2-F610E6228747}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DietApp.WinUI", "DietApp.WinUI\DietApp.WinUI.csproj", "{9BFC3E77-0A7B-4187-BEF2-F610E6228747}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.ViewModels", "DietApp.ViewModels\DietApp.ViewModels.csproj", "{38E62662-69AB-44EF-8326-876F1DCB0442}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.System", "DietApp.System\DietApp.System.csproj", "{354B4EFC-0415-4497-9D2D-584DE8750948}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DietApp.ViewModels", "DietApp.ViewModels\DietApp.ViewModels.csproj", "{38E62662-69AB-44EF-8326-876F1DCB0442}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{60F6FBEA-6928-4DB3-84EB-07C84DCD74B1}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DietApp.Systm", "DietApp.Systm\DietApp.Systm.csproj", "{266D5D0F-088B-4160-8A9C-6A5C5A2B6273}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,10 +64,10 @@ Global
 		{38E62662-69AB-44EF-8326-876F1DCB0442}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E62662-69AB-44EF-8326-876F1DCB0442}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38E62662-69AB-44EF-8326-876F1DCB0442}.Release|Any CPU.Build.0 = Release|Any CPU
-		{354B4EFC-0415-4497-9D2D-584DE8750948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{354B4EFC-0415-4497-9D2D-584DE8750948}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{354B4EFC-0415-4497-9D2D-584DE8750948}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{354B4EFC-0415-4497-9D2D-584DE8750948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{266D5D0F-088B-4160-8A9C-6A5C5A2B6273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{266D5D0F-088B-4160-8A9C-6A5C5A2B6273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{266D5D0F-088B-4160-8A9C-6A5C5A2B6273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{266D5D0F-088B-4160-8A9C-6A5C5A2B6273}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
