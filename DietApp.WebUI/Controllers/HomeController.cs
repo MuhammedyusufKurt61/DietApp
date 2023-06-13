@@ -52,6 +52,24 @@ namespace DietApp.WebUI.Controllers
             }
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Register(UserCreateVM vm)
+        {
+            ResultService<User> result = _userBLL.CreateUser(vm);
+            if (result.HasError)
+            {
+                ViewData["ErrorMessage"] = result.ErrorItems.FirstOrDefault().ErrorMessage;
+                ViewData["ErrorType"] = result.ErrorItems.FirstOrDefault().ErrorType;
+                return View(vm);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -28,7 +28,33 @@ namespace DietApp.WinUI
         }      
                
 
-        private void LoginOnClick(object sender, EventArgs e)
+        private void Click(object sender, EventArgs e)
+        {
+
+            Button btn = (Button)sender;
+            string tag = btn.Tag.ToString();
+            switch (tag)
+            {
+                case "Login":
+                    LoginIn();
+                    break;
+                case "Register":
+                    NewRegister();
+                    break;
+            }
+
+            
+        }
+
+        private void NewRegister()
+        {
+            Form frm = EFContextForm.ConfigureServices<Register>();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void LoginIn()
         {
             string userName = txtUserName.Text;
             string password = txtPassword.Text;

@@ -16,5 +16,15 @@ namespace DietApp.WinUI.AdminScreen.CategoryScreen
         {
             InitializeComponent();
         }
+
+        private void CategoryForm_Load(object sender, EventArgs e)
+        {
+            Fill();
+        }
+
+        private void Fill()
+        {
+            lstCategory.Items.Clear();
+        }
     }
 }

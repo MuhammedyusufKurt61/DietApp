@@ -79,9 +79,10 @@
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(110, 30);
             this.btnLogin.TabIndex = 3;
+            this.btnLogin.Tag = "Login";
             this.btnLogin.Text = "Giriş";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.LoginOnClick);
+            this.btnLogin.Click += new System.EventHandler(this.Click);
             // 
             // btnRegister
             // 
@@ -90,8 +91,10 @@
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(110, 30);
             this.btnRegister.TabIndex = 3;
+            this.btnRegister.Tag = "Register";
             this.btnRegister.Text = "Kayıt Ol";
-            this.btnRegister.UseVisualStyleBackColor = true;            
+            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.Click);
             // 
             // Login
             // 
