@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/DietApp.DAL/Migrations/20230624113031_second.cs
+/DietApp.DAL/Migrations/20230624113031_second.Designer.cs
