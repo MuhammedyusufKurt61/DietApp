@@ -9,6 +9,6 @@ namespace DietApp.ViewModels.MealViewModesl
     public class MealBaseVM
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string MealName { get; set; }
     }
 }

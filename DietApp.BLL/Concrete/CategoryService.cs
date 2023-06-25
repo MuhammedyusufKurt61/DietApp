@@ -77,17 +77,54 @@ namespace DietApp.BLL.Concrete
 
         public ResultService<Category> GetAllCategories()
         {
-            throw new NotImplementedException();
+            ResultService<Category> result = new ResultService<Category>();
+
+            List<Category> categories = _categoryDAL.GetAll(x => x.IsActive, x => x.CategoryName, x => x.Foods).ToList();
+            result.ListData = categories;
+
+            return result;
         }
 
         public ResultService<CategoryUpdateVM> GetCategory(int id)
         {
-            throw new NotImplementedException();
+            ResultService<CategoryUpdateVM> result = new ResultService<CategoryUpdateVM>();
+            Category category = _categoryDAL.Get(x => x.Id == id, x => x.IsActive);
+
+            if (category != null)
+            {
+                result.Data = new CategoryUpdateVM
+                {
+                    Id = category.Id,
+                    Name = category.CategoryName
+                };
+            }
+            else
+            {
+                result.AddError("Kayıt Bulunamadı", "Kayıt Bulunamadı");
+            }
+
+            return result;
         }
 
         public ResultService<Category> GetCategoryByName(string categoryName)
         {
-            throw new NotImplementedException();
+            ResultService<Category> result = new ResultService<Category>();
+            Category category = _categoryDAL.Get(x => x.CategoryName == categoryName, x => x.IsActive);
+
+            if (category != null)
+            {
+                result.Data = category;                
+            }
+            else
+            {
+                result.Data = new Category
+                {
+                    Id = -1,
+                    CategoryName = categoryName
+                };
+                result.AddError("Kayıt Bulunamadı", "Bu isimde kategori mevcut değil"); 
+            }
+            return result;
         }
 
         public ResultService<CategoryBaseVM> GetCategoryId(string categoryName)

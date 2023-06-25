@@ -16,6 +16,9 @@ namespace DietApp.BLL
         {
             services.AddScopedDal();
             services.AddScoped<IUserBLL, UserService>();
+            services.AddScoped<IMealBLL, MealService>();
+            services.AddScoped<IFoodBLL, FoodService>();
+            services.AddScoped<ICategoryBLL, CategoryService>();
         }
     }
 }

@@ -1,22 +1,29 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DietApp.BLL.Abstract;
+using DietApp.Entity;
+using DietApp.Systm;
+using DietApp.ViewModels.MealViewModesl;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DietApp.WebUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class MealController : Controller
     {
+        private readonly IMealBLL _mealBLL;
+
+        public MealController(IMealBLL mealBLL)
+        {
+            _mealBLL = mealBLL;
+        }
+
         // GET: MealController
         public ActionResult Index()
         {
-            return View();
+            ResultService<MealBaseVM> result = _mealBLL.GetAllMeals();
+            return View(result);
         }
-
-        // GET: MealController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
+                
         // GET: MealController/Create
         public ActionResult Create()
         {
@@ -26,58 +33,77 @@ namespace DietApp.WebUI.Areas.Admin.Controllers
         // POST: MealController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(MealCreateVM vm)
         {
-            try
+            ResultService<Meal> result = _mealBLL.CreateMeal(vm);
+            if (result.HasError)
             {
-                return RedirectToAction(nameof(Index));
+                string errorMessage = result.ErrorItems.ToList()[0].ErrorMessage;
+                string errorType = result.ErrorItems.ToList()[0].ErrorMessage;
+
+                ViewData["Errors"] = errorMessage +"\n" + errorType;
+                return View(vm);//Hata ile birlikte gelen veriyi de geri döndürecek.
             }
-            catch
-            {
-                return View();
-            }
+
+            TempData["Success"] = result.Data.MealName + "\n" + "Kayıt işlemi başarılı";
+            return RedirectToAction("Index");
+           
         }
 
-        // GET: MealController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: MealController/Update/5
+        public ActionResult Update(int id)
         {
-            return View();
+            ResultService<Meal> result = _mealBLL.GetMealById(id);
+            MealUpdateVM updateVM = new MealUpdateVM()
+            {
+                Id = result.Data.Id,
+                MealName = result.Data.MealName,
+            };
+
+            return View(updateVM);
         }
 
-        // POST: MealController/Edit/5
+        // POST: MealController/Update/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Update(MealUpdateVM vm)
         {
-            try
+            ResultService<MealUpdateVM> result = _mealBLL.UpdateMeal(vm);
+
+            if (result.HasError)
             {
-                return RedirectToAction(nameof(Index));
+                string errorMessage = result.ErrorItems.ToList()[0].ErrorMessage;
+                string errorType = result.ErrorItems.ToList()[0].ErrorMessage;
+
+                ViewData["Errors"] = errorMessage + "\n" + errorType;
+                return View(vm);//Hata ile birlikte gelen veriyi de geri döndürecek.
             }
-            catch
-            {
-                return View();
-            }
+            TempData["Success"] = result.Data.MealName + "\n" + "Güncelleme işlemi başarılı";
+            return RedirectToAction("Index");
         }
 
         // GET: MealController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ResultService<MealBaseVM> result = _mealBLL.DeleteMealById(id);
+
+            if (result.HasError)
+            {
+                string errorMessage = result.ErrorItems.ToList()[0].ErrorMessage;
+                string errorType = result.ErrorItems.ToList()[0].ErrorMessage;
+
+                TempData["Errors"] = errorMessage + "\n" + errorType;                
+            }
+            else
+            {
+                string message = "Silme işlemi başarılı";
+                string deletedName = result.Data.MealName;
+
+                TempData["Success"] = message+ " " + deletedName;
+            }
+           
+            return RedirectToAction("Index");
         }
 
-        // POST: MealController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

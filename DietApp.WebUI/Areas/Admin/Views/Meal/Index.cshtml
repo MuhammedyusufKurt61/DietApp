@@ -1,0 +1,64 @@
+﻿@model ResultService<MealBaseVM>
+
+@{
+    ViewData["Title"] = "Meal List";
+    Layout = "_AdminLayout";
+}
+
+<h1>Meal List</h1>
+
+@{
+    if (Model.HasError)
+    {
+        string errorMessage = Model.ErrorItems.ToList()[0].ErrorMessage;
+        string errorType = Model.ErrorItems.ToList()[0].ErrorMessage;
+        <p class="text-danger">@errorType</p>
+        <p class="text-danger">@errorMessage</p>
+    }
+
+    if (TempData["Success"] != null)
+    {
+        <h4>@TempData["Success"].ToString()</h4>
+    }
+    else if (TempData["Errors"] != null)
+    {
+        <h4>@TempData["Errors"].ToString()</h4>
+    }
+}
+
+<p>
+    <button class="btn btn-primary">
+        <a asp-area="Admin" asp-controller="Meal" asp-action="Create" class="text-black">Yeni Öğün Oluştur</a> 
+    </button>
+</p>
+
+<table class=" table border-1">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data.MealName)
+            </th> 
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListData)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.MealName)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle","Update",new {id = item.Id});
+                    @Html.ActionLink("Sil","Delete",new {id = item.Id});
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

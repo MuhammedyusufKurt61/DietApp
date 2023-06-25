@@ -9,7 +9,7 @@ namespace DietApp.Core
 {
     public interface IRepository <TEntity> where TEntity : BaseEntity
     {
-        TEntity Get(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includes);
+        TEntity Get(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includes);//Buradaki params ifadesiyle aslında birden fazla tablodan veriyi döndürmek istediğimiz için includsla beraber bunu sağlayabiliyoruz.
         ICollection<TEntity> GetAll(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity, object>>[] includes);
         TEntity Add(TEntity entity);
         TEntity Update(TEntity entity);

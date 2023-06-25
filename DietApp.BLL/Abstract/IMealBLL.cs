@@ -11,14 +11,13 @@ using System.Threading.Tasks;
 namespace DietApp.BLL.Abstract
 {
     public interface IMealBLL : IBaseBLL<Meal>
-    {
-        ResultService<MealBaseVM> GetMealId(string mealName);
-        ResultService<Meal> GetAllMeals();
-        ResultService<Meal> GetMealByName(string mealName);
-        ResultService<MealBaseVM> DeleteMealById(int id);
-        ResultService<MealUpdateVM> UpdateMeal(MealUpdateVM vm);
+    {        
         ResultService<Meal> CreateMeal(MealCreateVM vm);
-        ResultService<MealUpdateVM> GetMeal(int id);
+        ResultService<MealUpdateVM> UpdateMeal(MealUpdateVM vm);
+        ResultService<MealBaseVM> DeleteMealById(int id);
+        ResultService<Meal> GetMealByName(string mealName);
+        ResultService<Meal> GetMealById(int id);
+        ResultService<MealBaseVM> GetAllMeals();
         bool AnyMeal(string MealName);
     }
 

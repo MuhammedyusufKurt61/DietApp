@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DietApp.BLL.Concrete
 {
-    public class MealService: IMealBLL
+    public class MealService : IMealBLL
     {
         private readonly IMealDAL _mealDAL;
         public MealService(IMealDAL mealDAL)
@@ -29,28 +29,44 @@ namespace DietApp.BLL.Concrete
         public ResultService<Meal> CreateMeal(MealCreateVM vm)
         {
             ResultService<Meal> result = new ResultService<Meal>();
-            bool checkMeal = AnyMeal(vm.MealName);
-            if (!checkMeal)
+
+            Meal newMeal = new Meal()
             {
-                Meal newMeal = new Meal()
-                {
-                    MealName = vm.MealName
-                };
-                Meal addMeal = _mealDAL.Add(newMeal);
-                result.Data = addMeal ?? newMeal;
-                if (addMeal == null)
-                {
-                    result.AddError("Hata Oluştu", "Ekleme İşlemi Başarısız.");
-                }
-            }
-            else
+                MealName = vm.MealName,
+                CreateOn = vm.CreateOn,
+            };
+            Meal addMeal = _mealDAL.Add(newMeal);
+            if (addMeal == null)
             {
-                result.Data = new Meal
-                {
-                    MealName = vm.MealName
-                };
-                result.AddError("Kayıt mevcut", "Ekleme Başarısız");
+                result.AddError("Hata Oluştu", "Ekleme İşlemi Başarısız.");
             }
+            result.Data = addMeal ?? newMeal;
+
+            //bool checkMeal = AnyMeal(vm.MealName);
+            //if (!checkMeal)
+            //{
+            //    Meal newMeal = new Meal()
+            //    {
+            //        MealName = vm.MealName,
+            //        CreateOn= vm.CreateOn,
+            //    };
+            //    Meal addMeal = _mealDAL.Add(newMeal);
+            //    result.Data = addMeal ?? newMeal;
+            //    if (addMeal == null)
+            //    {
+            //        result.AddError("Hata Oluştu", "Ekleme İşlemi Başarısız.");
+            //    }
+            //}
+            //else
+            //{
+            //    result.Data = new Meal
+            //    {
+            //        MealName = vm.MealName,
+            //        CreateOn= vm.CreateOn,
+            //    };
+            //    result.AddError("Kayıt mevcut", "Ekleme Başarısız");
+            //}
+
             return result;
         }
 
@@ -61,13 +77,13 @@ namespace DietApp.BLL.Concrete
             {
                 Meal meal = _mealDAL.Get(x => x.Id.Equals(id) && x.IsActive);
                 meal.IsActive = false;
-                _mealDAL.Delete(meal);
-
                 result.Data = new MealBaseVM
                 {
                     Id = meal.Id,
-                    Name = meal.MealName
+                    MealName = meal.MealName
                 };
+
+                _mealDAL.Delete(meal);
             }
             catch (Exception)
             {
@@ -76,69 +92,62 @@ namespace DietApp.BLL.Concrete
             return result;
         }
 
-        public ResultService<Meal> GetAllMeals()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ResultService<MealUpdateVM> GetMeal(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ResultService<Meal> GetMealByName(string mealName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ResultService<MealBaseVM> GetMealId(string mealName)
+        public ResultService<MealBaseVM> GetAllMeals()
         {
             ResultService<MealBaseVM> result = new ResultService<MealBaseVM>();
-            Meal meal = _mealDAL.Get(x => x.IsActive && x.MealName == mealName);
-            if (meal != null)
+            List<MealBaseVM> baseList = _mealDAL.GetAll(x => x.IsActive)
+                                         .Select(x => new MealBaseVM()
+                                         {
+                                             Id = x.Id,
+                                             MealName = x.MealName
+                                         }).ToList();
+            if (baseList.Count > 0)
             {
-                result.Data = new MealBaseVM
-                {
-                    Id = meal.Id,
-                    Name = mealName
-                };
+                result.ListData = baseList;
             }
             else
             {
-                result.Data = new MealBaseVM
-                {
-                    Id = -1,
-                    Name = mealName
-                };
-                result.AddError("Kayıt Bulunamadı", "Bu isimde bir öğün yok");
+                result.AddError("Hata!", "Verilere ulaşılamadı");
             }
             return result;
         }
 
+        public ResultService<Meal> GetMealById(int id)
+        {
+            ResultService<Meal> result = new ResultService<Meal>();
+            result.Data = _mealDAL.Get(x => x.IsActive && x.Id == id);
+            if (result.Data == null)
+            {
+                result.AddError("Kayıt bulunamadı", "Kayıt Bulunamadı");
+            }
+            return result;
+        }
+
+        public ResultService<Meal> GetMealByName(string mealName)
+        {
+            ResultService<Meal> result = new ResultService<Meal>();
+            result.Data = _mealDAL.Get(x => x.IsActive && x.MealName.Equals(mealName));
+            if (result.Data == null)
+            {
+                result.AddError("Kayıt bulunamadı", "Kayıt Bulunamadı");
+            }
+            return result;
+        }
+
+
         public ResultService<MealUpdateVM> UpdateMeal(MealUpdateVM vm)
         {
             ResultService<MealUpdateVM> result = new ResultService<MealUpdateVM>();
-            Meal meal = _mealDAL.Get(x => x.IsActive && x.Id == vm.Id);
-            if (!AnyMeal(vm.Name))
+            try
             {
-                meal.MealName = vm.Name;
+                Meal meal = _mealDAL.Get(x => x.IsActive && x.Id == vm.Id);
+                meal.MealName = vm.MealName;
                 meal.UpdateOn = vm.UpdateDate;
-                Meal updateMeal = _mealDAL.Update(meal);
-                if (updateMeal != null)
-                {
-                    result.Data = new MealUpdateVM
-                    {
-                        Id = updateMeal.Id,
-                        Name = updateMeal.MealName
-                    };
-                }
-                else
-                {
-                    result.AddError("Hata", "Güncelleme Başarısız");
-                }
-            }
 
-            else
+                Meal updateMeal = _mealDAL.Update(meal);
+                result.Data = vm;
+            }
+            catch (Exception)
             {
                 result.Data = vm;
                 result.AddError("Güncelleme Başarısız.", "Kayıt Bulunamadı.");

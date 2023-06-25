@@ -9,5 +9,6 @@ namespace DietApp.ViewModels.MealViewModesl
     public class MealCreateVM
     {
         public string MealName { get; set; }
+        public DateTime CreateOn { get; set; }
     }
 }
