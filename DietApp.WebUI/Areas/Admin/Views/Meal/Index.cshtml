@@ -5,7 +5,7 @@
     Layout = "_AdminLayout";
 }
 
-<h1>Meal List</h1>
+<h1>Öğün Listesi</h1>
 
 @{
     if (Model.HasError)
@@ -55,8 +55,8 @@
                     @Html.DisplayFor(model => item.MealName)
                 </td>
                 <td>
-                    @Html.ActionLink("Güncelle","Update",new {id = item.Id});
-                    @Html.ActionLink("Sil","Delete",new {id = item.Id});
+                    @Html.ActionLink("Güncelle", "Update", new {  id=item.Id  });
+                    @Html.ActionLink("Sil", "Delete", new {  id=item.Id  });                                        
                 </td>
             </tr>
         }

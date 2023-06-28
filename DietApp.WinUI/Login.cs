@@ -85,7 +85,8 @@ namespace DietApp.WinUI
                 {
                     frm = EFContextForm.ConfigureServices<AdminForm>();
                 }
-                frm.Show();                
+                frm.Show();
+                this.Hide();
             }
 
         }

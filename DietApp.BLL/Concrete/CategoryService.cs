@@ -33,7 +33,8 @@ namespace DietApp.BLL.Concrete
             {
                 Category newCategory = new Category()
                 {
-                    CategoryName = vm.CategoryName
+                    CategoryName = vm.CategoryName,
+                    CreateOn = vm.CreateDate
                 };
                 Category addCategory = _categoryDAL.Add(newCategory);
                 result.Data = addCategory ?? newCategory;
@@ -79,7 +80,7 @@ namespace DietApp.BLL.Concrete
         {
             ResultService<Category> result = new ResultService<Category>();
 
-            List<Category> categories = _categoryDAL.GetAll(x => x.IsActive, x => x.CategoryName, x => x.Foods).ToList();
+            List<Category> categories = _categoryDAL.GetAll(x => x.IsActive, x => x.Foods).ToList();
             result.ListData = categories;
 
             return result;
@@ -88,7 +89,7 @@ namespace DietApp.BLL.Concrete
         public ResultService<CategoryUpdateVM> GetCategory(int id)
         {
             ResultService<CategoryUpdateVM> result = new ResultService<CategoryUpdateVM>();
-            Category category = _categoryDAL.Get(x => x.Id == id, x => x.IsActive);
+            Category category = _categoryDAL.Get(x => x.Id.Equals(id) && x.IsActive);
 
             if (category != null)
             {
@@ -109,7 +110,7 @@ namespace DietApp.BLL.Concrete
         public ResultService<Category> GetCategoryByName(string categoryName)
         {
             ResultService<Category> result = new ResultService<Category>();
-            Category category = _categoryDAL.Get(x => x.CategoryName == categoryName, x => x.IsActive);
+            Category category = _categoryDAL.Get(x => x.IsActive && x.CategoryName == categoryName);
 
             if (category != null)
             {
@@ -127,16 +128,16 @@ namespace DietApp.BLL.Concrete
             return result;
         }
 
-        public ResultService<CategoryBaseVM> GetCategoryId(string categoryName)
+        public ResultService<CategoryBaseVM> GetCategoryId(int id)
         {
             ResultService<CategoryBaseVM> result = new ResultService<CategoryBaseVM>();
-            Category category = _categoryDAL.Get(x => x.IsActive && x.CategoryName == categoryName);
+            Category category = _categoryDAL.Get(x => x.Id.Equals(id) && x.IsActive);
             if (category != null)
             {
                 result.Data = new CategoryBaseVM
                 {
                     Id = category.Id,
-                    Name = categoryName
+                    Name = category.CategoryName
                 };
             }
             else
@@ -144,7 +145,7 @@ namespace DietApp.BLL.Concrete
                 result.Data = new CategoryBaseVM
                 {
                     Id = -1,
-                    Name = categoryName
+                    Name = category.CategoryName
                 };
                 result.AddError("Kayıt Bulunamadı", "Bu isimde bir kategori yok");
             }

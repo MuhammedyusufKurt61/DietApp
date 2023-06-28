@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DietApp.WebUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class FoodController : Controller
     {
         // GET: FoodController

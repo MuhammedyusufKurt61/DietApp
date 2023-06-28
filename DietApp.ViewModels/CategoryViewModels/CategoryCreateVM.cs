@@ -9,5 +9,6 @@ namespace DietApp.ViewModels.CategoryViewModels
     public class CategoryCreateVM
     {
         public string CategoryName { get; set; }
+        public DateTime CreateDate => DateTime.Now;
     }
 }

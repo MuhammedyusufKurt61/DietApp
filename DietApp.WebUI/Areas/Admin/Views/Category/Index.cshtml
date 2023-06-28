@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CategoryBaseVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Kategori Listesi</h1>
+
+@if (TempData["Success"] != null)
+{
+    <h4 class="text-success">@TempData["Success"].ToString()</h4>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+    <h4 class="text-danger">@TempData["ErrorMessage"].ToString()</h4>
+    <h4 class="text-danger">@TempData["ErrorType"].ToString()</h4>
+}
+
+<p>
+    <button class="btn btn-primary">
+        <a asp-area="Admin" asp-controller="Category" asp-action="Create" class="text-black">Yeni Kategori Oluştur</a>
+    </button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

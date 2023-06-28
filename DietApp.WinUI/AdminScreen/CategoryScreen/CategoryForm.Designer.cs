@@ -71,6 +71,7 @@
             this.btnDelete.Tag = "Delete";
             this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.Click);
             // 
             // btnUpdate
             // 
@@ -81,6 +82,7 @@
             this.btnUpdate.Tag = "Update";
             this.btnUpdate.Text = "Güncelle";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.Click);
             // 
             // btnNew
             // 
@@ -91,6 +93,7 @@
             this.btnNew.Tag = "Create";
             this.btnNew.Text = "Yeni Oluştur";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.Click);
             // 
             // lstCategory
             // 
@@ -100,6 +103,7 @@
             this.lstCategory.Name = "lstCategory";
             this.lstCategory.Size = new System.Drawing.Size(219, 289);
             this.lstCategory.TabIndex = 4;
+            this.lstCategory.SelectedIndexChanged += new System.EventHandler(this.SelectedIndex);
             // 
             // CategoryForm
             // 

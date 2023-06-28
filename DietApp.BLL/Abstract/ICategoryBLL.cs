@@ -11,7 +11,7 @@ namespace DietApp.BLL.Abstract
 {
     public interface ICategoryBLL : IBaseBLL<Category>
     {
-        ResultService<CategoryBaseVM> GetCategoryId(string categoryName);
+        ResultService<CategoryBaseVM> GetCategoryId(int id);
         ResultService<Category> GetAllCategories();
         ResultService<Category> GetCategoryByName(string categoryName);
         ResultService<CategoryBaseVM> DeleteCategoryById(int id);

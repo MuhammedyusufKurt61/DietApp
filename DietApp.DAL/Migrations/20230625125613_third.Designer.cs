@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DietApp.DAL.Migrations
 {
     [DbContext(typeof(DietAppDbContext))]
-    [Migration("20230602183433_Init")]
-    partial class Init
+    [Migration("20230625125613_third")]
+    partial class third
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,63 +58,63 @@ namespace DietApp.DAL.Migrations
                         {
                             Id = 1,
                             CategoryName = "Süt Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7503),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6588),
                             IsActive = true
                         },
                         new
                         {
                             Id = 2,
                             CategoryName = "Et Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7506),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6591),
                             IsActive = true
                         },
                         new
                         {
                             Id = 3,
                             CategoryName = "KuruBaklagil Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7506),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6592),
                             IsActive = true
                         },
                         new
                         {
                             Id = 4,
                             CategoryName = "Ekmek Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7507),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6593),
                             IsActive = true
                         },
                         new
                         {
                             Id = 5,
                             CategoryName = "Sebze Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7508),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6593),
                             IsActive = true
                         },
                         new
                         {
                             Id = 6,
                             CategoryName = "Meyve Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7508),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6594),
                             IsActive = true
                         },
                         new
                         {
                             Id = 7,
                             CategoryName = "Yağ Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7509),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6594),
                             IsActive = true
                         },
                         new
                         {
                             Id = 8,
                             CategoryName = "Tatlı Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7510),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6595),
                             IsActive = true
                         },
                         new
                         {
                             Id = 9,
                             CategoryName = "Kuruyemiş Grubu",
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(7510),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(6596),
                             IsActive = true
                         });
                 });
@@ -167,7 +167,7 @@ namespace DietApp.DAL.Migrations
                             Id = 1,
                             Calorie = 11400.0,
                             CategoryId = 1,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9236),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8264),
                             Description = "1 su bardağı,200 ml",
                             FoodName = "Süt",
                             IsActive = true
@@ -177,7 +177,7 @@ namespace DietApp.DAL.Migrations
                             Id = 2,
                             Calorie = 69000.0,
                             CategoryId = 2,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9240),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8267),
                             Description = "1 köfte, 30gr",
                             FoodName = "Kıyma",
                             IsActive = true
@@ -187,7 +187,7 @@ namespace DietApp.DAL.Migrations
                             Id = 3,
                             Calorie = 80000.0,
                             CategoryId = 3,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9241),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8267),
                             Description = "4 yemek kaşığı, 25gr",
                             FoodName = "Mercimek",
                             IsActive = true
@@ -197,7 +197,7 @@ namespace DietApp.DAL.Migrations
                             Id = 4,
                             Calorie = 68000.0,
                             CategoryId = 4,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9242),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8268),
                             Description = "3 yemek kaşığı, 50gr",
                             FoodName = "Makarna",
                             IsActive = true
@@ -207,7 +207,7 @@ namespace DietApp.DAL.Migrations
                             Id = 5,
                             Calorie = 25000.0,
                             CategoryId = 5,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9243),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8272),
                             Description = "4 yemek kaşığı, 200gr",
                             FoodName = "Brokoli(Pişmiş)",
                             IsActive = true
@@ -217,7 +217,7 @@ namespace DietApp.DAL.Migrations
                             Id = 6,
                             Calorie = 60000.0,
                             CategoryId = 6,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9244),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8273),
                             Description = "1 küçük boy, 120gr",
                             FoodName = "Elma",
                             IsActive = true
@@ -227,7 +227,7 @@ namespace DietApp.DAL.Migrations
                             Id = 7,
                             Calorie = 45000.0,
                             CategoryId = 7,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9245),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8274),
                             Description = "1 tatlı kaşığı, 5gr",
                             FoodName = "Tereyağ",
                             IsActive = true
@@ -237,7 +237,7 @@ namespace DietApp.DAL.Migrations
                             Id = 8,
                             Calorie = 68000.0,
                             CategoryId = 8,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9245),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8275),
                             Description = "1 yemek kaşığı, 30gr",
                             FoodName = "Bal",
                             IsActive = true
@@ -247,7 +247,7 @@ namespace DietApp.DAL.Migrations
                             Id = 9,
                             Calorie = 45000.0,
                             CategoryId = 9,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(9246),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(8303),
                             Description = "2 adet, 8gr",
                             FoodName = "Ceviz içi",
                             IsActive = true
@@ -287,21 +287,21 @@ namespace DietApp.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(6183),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(5296),
                             IsActive = true,
                             MealName = "Kahvaltı"
                         },
                         new
                         {
                             Id = 2,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(6186),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(5299),
                             IsActive = true,
                             MealName = "Öğle Yemeği"
                         },
                         new
                         {
                             Id = 3,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(6187),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(5300),
                             IsActive = true,
                             MealName = "Akşam Yemeği"
                         });
@@ -390,7 +390,7 @@ namespace DietApp.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            CreateOn = new DateTime(2023, 6, 2, 21, 34, 32, 844, DateTimeKind.Local).AddTicks(4748),
+                            CreateOn = new DateTime(2023, 6, 25, 15, 56, 13, 84, DateTimeKind.Local).AddTicks(3870),
                             Email = "admin@gmail.com",
                             IsActive = true,
                             Password = "123456",
